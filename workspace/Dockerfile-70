@@ -508,6 +508,20 @@ RUN if [ ${INSTALL_SYMFONY} = true ]; then \
 
 ;fi
 
+#####################################
+# PHP SNMP:
+#####################################
+USER root
+
+ARG INSTALL_SNMP=false
+ENV INSTALL_SNMP ${INSTALL_SNMP}
+
+RUN if [ ${INSTALL_SNMP} = true ]; then \
+  # Install the PHP SNMP extension
+  apt-get update -yqq && \
+  apt-get -y install php7.0-snmp snmp libsnmp-dev \
+;fi
+
 #
 #--------------------------------------------------------------------------
 # Final Touch

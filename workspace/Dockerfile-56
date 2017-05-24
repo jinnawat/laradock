@@ -392,6 +392,20 @@ RUN if [ ${INSTALL_MC} = true ]; then\
     chmod +x /usr/local/bin/mc \
 ;fi
 
+#####################################
+# PHP SNMP:
+#####################################
+USER root
+
+ARG INSTALL_SNMP=false
+ENV INSTALL_SNMP ${INSTALL_SNMP}
+
+RUN if [ ${INSTALL_SNMP} = true ]; then \
+  # Install the PHP SNMP extension
+  apt-get update -yqq && \
+  apt-get -y install php5-snmp snmp libsnmp-dev \
+;fi
+
 USER laradock
 
 #
