@@ -289,6 +289,18 @@ RUN if [ ${INSTALL_MSSQL} = true ]; then \
         && docker-php-ext-enable pdo_sqlsrv sqlsrv \
 ;fi
 
+#####################################
+# SNMP:
+#####################################
+
+ARG INSTALL_SNMP=false
+RUN if [ ${INSTALL_SNMP} = true ]; then \
+    # Install the snmp extension
+    apt-get update -yqq && \
+    apt-get -y install libsnmp-dev php-snmp && \
+    docker-php-ext-install snmp \
+;fi
+
 #
 #--------------------------------------------------------------------------
 # Final Touch
