@@ -254,7 +254,7 @@ ARG INSTALL_SNMP=false
 RUN if [ ${INSTALL_SNMP} = true ]; then \
     # Install the snmp extension
     apt-get update -yqq && \
-    apt-get -y install libsnmp-dev php-snmp && \
+    apt-get -y install libsnmp-dev snmp && \
     docker-php-ext-install snmp \
 ;fi
 
