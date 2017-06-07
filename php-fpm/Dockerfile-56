@@ -247,17 +247,6 @@ RUN if [ ${INSTALL_LDAP} = true ]; then \
 ;fi
 
 #####################################
-<<<<<<< HEAD
-# SNMP:
-#####################################
-
-ARG INSTALL_SNMP=false
-RUN if [ ${INSTALL_SNMP} = true ]; then \
-    # Install the snmp extension
-    apt-get update -yqq && \
-    apt-get -y install libsnmp-dev snmp && \
-    docker-php-ext-install snmp \
-=======
 # SQL SERVER:
 #####################################
 ARG INSTALL_MSSQL=false
@@ -267,7 +256,18 @@ RUN if [ ${INSTALL_MSSQL} = true ]; then \
     apt-get -y install php5-sybase freetds-bin && \
     cp /usr/lib/php5/20131226/*.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226/ && \
     docker-php-ext-enable mssql pdo pdo_dblib \
->>>>>>> 26ee54a4ad2b8723de3067dbaa199d34ca45cb68
+;fi
+
+#####################################
+# SNMP:
+#####################################
+
+ARG INSTALL_SNMP=false
+RUN if [ ${INSTALL_SNMP} = true ]; then \
+    # Install the snmp extension
+    apt-get update -yqq && \
+    apt-get -y install libsnmp-dev snmp && \
+    docker-php-ext-install snmp \
 ;fi
 
 #
