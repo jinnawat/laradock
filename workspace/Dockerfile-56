@@ -426,10 +426,22 @@ RUN if [ ${INSTALL_MC} = true ]; then\
 ;fi
 
 #####################################
+# Image optimizers:
+#####################################
+USER root
+ARG INSTALL_IMAGE_OPTIMIZERS=false
+ENV INSTALL_IMAGE_OPTIMIZERS ${INSTALL_IMAGE_OPTIMIZERS}
+RUN if [ ${INSTALL_IMAGE_OPTIMIZERS} = true ]; then \
+    apt-get install -y --force-yes jpegoptim optipng pngquant gifsicle && \
+    if [ ${INSTALL_NODE} = true ]; then \
+        . ~/.bashrc && npm install -g svgo \
+    ;fi\
+;fi
+
+#####################################
 # PHP SNMP:
 #####################################
 USER root
-
 ARG INSTALL_SNMP=false
 ENV INSTALL_SNMP ${INSTALL_SNMP}
 

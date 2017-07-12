@@ -259,9 +259,20 @@ RUN if [ ${INSTALL_MSSQL} = true ]; then \
 ;fi
 
 #####################################
+# Image optimizers:
+#####################################
+USER root
+ARG INSTALL_IMAGE_OPTIMIZERS=false
+ENV INSTALL_IMAGE_OPTIMIZERS ${INSTALL_IMAGE_OPTIMIZERS}
+RUN if [ ${INSTALL_IMAGE_OPTIMIZERS} = true ]; then \
+    apt-get update -yqq && \
+    apt-get install -y --force-yes jpegoptim optipng pngquant gifsicle \
+;fi
+
+#####################################
 # SNMP:
 #####################################
-
+USER root
 ARG INSTALL_SNMP=false
 RUN if [ ${INSTALL_SNMP} = true ]; then \
     # Install the snmp extension
