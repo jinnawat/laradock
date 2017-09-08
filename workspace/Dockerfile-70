@@ -276,6 +276,9 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
     echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.bashrc \
 ;fi
 
+# Add PATH for node
+ENV PATH $PATH:$NVM_DIR/versions/node/v${NODE_VERSION}/bin
+
 #####################################
 # YARN:
 #####################################
@@ -590,6 +593,16 @@ RUN if [ ${INSTALL_PYTHON} = true ]; then \
   && apt-get -y install python python-pip python-dev build-essential  \
   && pip install --upgrade pip  \
   && pip install --upgrade virtualenv \
+;fi
+
+#####################################
+# ImageMagick:
+#####################################
+USER root
+ARG INSTALL_IMAGEMAGICK=false
+ENV INSTALL_IMAGEMAGICK ${INSTALL_IMAGEMAGICK}
+RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
+    apt-get install -y --force-yes imagemagick php-imagick \
 ;fi
 
 #
