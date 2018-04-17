@@ -144,7 +144,6 @@ USER root
 COPY ./crontab /etc/cron.d
 
 RUN chmod -R 644 /etc/cron.d
-RUN echo "#!/bin/bash\ntouch /etc/crontab /etc/cron.d/*" >> /etc/my_init.d/touch-crond && chmod 744 /etc/my_init.d/touch-crond
 
 ###########################################################################
 # SOAP:
