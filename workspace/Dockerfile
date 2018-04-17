@@ -582,7 +582,6 @@ RUN set -eux; if [ ${INSTALL_MSSQL} = true ]; then \
     && php -m | grep -q 'pdo_sqlsrv' \
 ;fi
 
-<<<<<<< HEAD:workspace/Dockerfile-71
 #####################################
 # PHP SNMP:
 #####################################
@@ -593,13 +592,10 @@ ENV INSTALL_SNMP ${INSTALL_SNMP}
 RUN if [ ${INSTALL_SNMP} = true ]; then \
   # Install the PHP SNMP extension
   apt-get update -yqq && \
-  apt-get -y install php7.1-snmp snmp libsnmp-dev \
+  apt-get -y install php${PHP_VERSION}-snmp snmp libsnmp-dev \
 ;fi
 
-#####################################
-=======
 ###########################################################################
->>>>>>> 0c41fceae1b23089f5360dc4f8aeb85719c7bf5a:workspace/Dockerfile
 # Minio:
 ###########################################################################
 

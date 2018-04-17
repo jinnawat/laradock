@@ -349,6 +349,18 @@ RUN set -eux; if [ ${INSTALL_MSSQL} = true ]; then \
     && php -m | grep -q 'sqlsrv' \
 ;fi
 
+#####################################
+# SNMP:
+#####################################
+USER root
+ARG INSTALL_SNMP=false
+RUN if [ ${INSTALL_SNMP} = true ]; then \
+    # Install the snmp extension
+    apt-get update -yqq && \
+    apt-get -y install libsnmp-dev snmp && \
+    docker-php-ext-install snmp \
+;fi
+
 ###########################################################################
 # Image optimizers:
 ###########################################################################
