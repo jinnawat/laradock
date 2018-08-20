@@ -157,6 +157,7 @@ PHP_FPM_INSTALL_CALENDAR=false
 ### PHP_WORKER ############################################
 
 PHP_WORKER_INSTALL_PGSQL=false
+PHP_WORKER_INSTALL_BCMATH=false
 
 ### NGINX #################################################
 
@@ -339,6 +340,8 @@ AEROSPIKE_INFO_PORT=3003
 # for all versions "https://github.com/aerospike/aerospike-client-php/archive/master.tar.gz"
 # for php 7.2 (using this branch until the support for 7.2 on master) "https://github.com/aerospike/aerospike-client-php/archive/7.2.0-release-candidate.tar.gz"
 AEROSPIKE_PHP_REPOSITORY=https://github.com/aerospike/aerospike-client-php/archive/7.2.0-release-candidate.tar.gz
+# for php 5.6
+# AEROSPIKE_PHP_REPOSITORY=https://github.com/aerospike/aerospike-client-php5/archive/3.4.15.tar.gz
 
 ### RETHINKDB #############################################
 
@@ -364,6 +367,14 @@ LARAVEL_ECHO_SERVER_PORT=6001
 SOLR_VERSION=5.5
 SOLR_PORT=8983
 SOLR_DATAIMPORTHANDLER_MYSQL=false
+
+### GITLAB ###############################################
+GITLAB_HOST_HTTP_PORT=8989
+GITLAB_HOST_HTTPS_PORT=9898
+GITLAB_HOST_SSH_PORT=2289
+GITLAB_DOMAIN_NAME=http://localhost
+GITLAB_ROOT_PASSWORD=laradock
+GITLAB_HOST_LOG_PATH=./logs/gitlab
 
 ### JUPYTERHUB ###############################################
 JUPYTERHUB_POSTGRES_HOST=postgres
@@ -397,3 +408,8 @@ MONGO_WEBUI_PORT=3000
 MONGO_WEBUI_ROOT_URL=http://localhost
 MONGO_WEBUI_MONGO_URL=mongodb://mongo:27017/
 MONGO_WEBUI_INSTALL_MONGO=false
+
+### METABASE ###############################################
+METABASE_PORT=3030
+METABASE_DB_FILE=metabase.db
+METABASE_JAVA_TIMEZONE=US/Pacific
