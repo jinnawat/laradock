@@ -325,6 +325,7 @@ services:
         - "${MYSQL_PORT}:3306"
       networks:
         - backend
+      command: --innodb-use-native-aio=0
 
 ### Percona ################################################
     percona:
